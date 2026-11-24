@@ -1,0 +1,4 @@
+regeneration:
+  enabled: true
+  amplifier: 2
+  duration-seconds: 30
