@@ -26,8 +26,11 @@ public final class GodappleCommand implements CommandExecutor, TabCompleter {
             }
             case "reload" -> {
                 if (!allowed(sender, RELOAD)) return true;
-                plugin.getConfigManager().reload();
-                RpgMessages.success(sender, MODULE, "AbyssalDominionGodapple configuration reloaded!");
+                if (plugin.getConfigManager().reload()) {
+                    RpgMessages.success(sender, MODULE, "AbyssalDominionGodapple configuration reloaded!");
+                } else {
+                    RpgMessages.error(sender, MODULE, "Configuration reload failed; previous valid configuration retained.");
+                }
             }
             default -> usage(sender, label);
         }
